@@ -1,16 +1,20 @@
 import React from "react";
+import './App.css'
 
 const App = () => {
+
+  //assuming this items is fetched through an API endpoint.
+  //right now, im just hard coding the image link and its decription
   const items = [
-    { image_link: "imgLink1", description: "Desc1" },
-    { image_link: "imgLink2", description: "Desc2" },
-    { image_link: "imgLink3", description: "Desc3" },
-    { image_link: "imgLink4", description: "Desc4" },
-    { image_link: "imgLink5", description: "Desc5" }
+    { image_link: "https://elearningindustry.com/wp-content/uploads/2020/10/advantages-and-disadvantages-of-online-learning.jpg", description: "Working Image Link, Loading Seamlessly, and working Fine." },
+    { image_link: "https://elearningindustry.com/wp-content/uploads/2020/10/advantages-and-disadvantages-of-online-learning.jpg", description: "working Image Link, Loading Seamlessly, and working Fine." },
+    { image_link: "brokenImageLink", description: "Broken Image Link, It takes you to the fallback image url, displaying that image link is broken" },
+    { image_link: "https://elearningindustry.com/wp-content/uploads/2020/10/advantages-and-disadvantages-of-online-learning.jpg", description: "working Image Link, Loading Seamlessly, and working Fine." },
+    { image_link: "brokenImageLink", description: "Broken Image Link, It takes you to the fallback image url, displaying that image link is broken" }
   ];
 
   return (
-    <div>
+    <div className="card-container" >
       {items.map((item, index) => (
         <Card key={index} image_link={item.image_link} description={item.description} />
       ))}
@@ -27,8 +31,8 @@ const Card = ({ image_link, description }) => {
 
   return (
     <div className="card">
-      <img src={image_link} onError={handleImageError} alt="Item" />
-      <p>{description}</p>
+      <img className="card-image" src={image_link} onError={handleImageError} alt="Item" />
+      <p className="card-description">{description}</p>
     </div>
   );
 };
